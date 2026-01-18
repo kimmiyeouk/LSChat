@@ -7,5 +7,14 @@ author: miyeoukman
 commands:
   lschat:
     description: Main command for LSChat
-    usage: /lschat [reload|test|testdonate]
-    permission: lschat.admin
+    usage: /lschat [toggle|reload|test|testdonate]
+    permission: lschat.use
+    permission-message: You do not have permission to use this command.
+
+permissions:
+  lschat.use:
+    description: Allows usage of /lschat toggle
+    default: true
+  lschat.admin:
+    description: Allows usage of admin commands like reload and test
+    default: op

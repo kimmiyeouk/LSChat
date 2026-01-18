@@ -23,9 +23,37 @@ public class LSChatCommand implements CommandExecutor {
         try {
             if (args.length == 0) {
                 sender.sendMessage(ChatColor.AQUA + "LSChat v" + plugin.getDescription().getVersion());
-                sender.sendMessage(ChatColor.GRAY + "/lschat reload - Config reload");
-                sender.sendMessage(ChatColor.GRAY + "/lschat test <msg> - Test chat event");
-                sender.sendMessage(ChatColor.GRAY + "/lschat testdonate <user> <amount> <msg> - Test donation event");
+                sender.sendMessage(ChatColor.GRAY + "/lschat toggle - Toggle chat monitoring");
+                if (sender.hasPermission("lschat.admin")) {
+                    sender.sendMessage(ChatColor.GRAY + "/lschat reload - Config reload");
+                    sender.sendMessage(ChatColor.GRAY + "/lschat test <msg> - Test chat event");
+                    sender.sendMessage(ChatColor.GRAY + "/lschat testdonate <user> <amount> <msg> - Test donation event");
+                }
+                return true;
+            }
+
+            if (args[0].equalsIgnoreCase("toggle")) {
+                if (!(sender instanceof org.bukkit.entity.Player)) {
+                    sender.sendMessage(ChatColor.RED + "Only players can use this command.");
+                    return true;
+                }
+                
+                // Allow toggle if player has permission lschat.use (or default true)
+                if (!sender.hasPermission("lschat.use")) {
+                     sender.sendMessage(ChatColor.RED + "No permission.");
+                     return true;
+                }
+                
+                org.bukkit.entity.Player player = (org.bukkit.entity.Player) sender;
+                String viewTag = plugin.getConfig().getString("settings.view-tag", "lschat_viewer");
+                
+                if (player.getScoreboardTags().contains(viewTag)) {
+                    player.removeScoreboardTag(viewTag);
+                    player.sendMessage(ChatColor.YELLOW + "LSChat monitoring disabled.");
+                } else {
+                    player.addScoreboardTag(viewTag);
+                    player.sendMessage(ChatColor.GREEN + "LSChat monitoring enabled.");
+                }
                 return true;
             }
 

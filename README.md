@@ -19,6 +19,7 @@
 
 | 명령어 | 설명 | 권한 (Permission) |
 | :--- | :--- | :--- |
+| `/lschat toggle` | 방송 채팅 모니터링을 켜거나 끕니다. | `lschat.use` (기본: 모두) |
 | `/lschat reload` | 플러그인 설정 및 플랫폼 연결을 리로드합니다. | `lschat.admin` |
 | `/lschat test <메시지>` | 방송 없이 채팅 연동 기능을 테스트합니다. | `lschat.admin` |
 | `/lschat testdonate <닉네임> <금액> <메시지>` | 후원(도네이션) 알림 기능을 테스트합니다. | `lschat.admin` |
