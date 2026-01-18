@@ -1,0 +1,11 @@
+name: LSChat
+version: 1.0-SNAPSHOT
+main: me.miyeoukman.lschat.Main
+api-version: 1.20
+description: LSChat plugin for Chzzk and YouTube integration.
+author: miyeoukman
+commands:
+  lschat:
+    description: Main command for LSChat
+    usage: /lschat [reload|test|testdonate]
+    permission: lschat.admin

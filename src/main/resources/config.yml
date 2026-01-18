@@ -1,0 +1,23 @@
+# LSChat Configuration
+
+settings:
+  # 채팅을 볼 수 있는 플레이어가 가져야 할 태그 (Scoreboard tag)
+  view-tag: "lschat_viewer"
+  
+  # 도네이션 알림 설정
+  donations:
+    enable-alert: true
+    # 도네이션 시 재생할 사운드 (https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html)
+    sound: "ENTITY_PLAYER_LEVELUP"
+    # 하이라이트 메시지 형식
+    format: "&6&l[DONATION] &e{streamer} &7- &f{message} &b({amount})"
+
+# 플랫폼 설정
+platforms:
+  chzzk:
+    enabled: true
+    channel-id: ""
+  youtube:
+    enabled: false
+    api-key: ""
+    video-id: ""
